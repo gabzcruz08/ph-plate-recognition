@@ -9,7 +9,7 @@
  **************************************************************/
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
-    #include <wx/wx.h>
+#include <wx/wx.h>
 #endif
 #include <string.h>
 #include <sstream>
@@ -22,6 +22,13 @@ void color_inversion (wxImage &image3);
 //Definitions
 #define W 500
 #define H 500
+
+/* 
+* This part of the code grayscales the image so that it would be prepared for thresholding.
+* The process is easily done, and is acquired by multiplying the RGB constants of each pixel by
+* 0.21, 0.72, and 0.07. Then, the luminosity is acquired by adding all of these
+* and applying this as the RGB color of each pixel.
+*/
 
 void grayscale(wxImage &image1)
 {
@@ -43,9 +50,10 @@ void grayscale(wxImage &image1)
  
 void threshold(wxImage &image2, bool isLetter)
 {
-    //Otsu's Binarization
-    //For identification purposes, is is assumed that the image has
-    //already been applied with a grayscale filter
+    /* Otsu's Binarization was applied for the thresholding and binarization.  
+    * 
+    * 
+    */
     int windowx = image2.GetWidth();
     int windowy = image2.GetHeight();
     int histoarray[256], sort_histoarray[256];
