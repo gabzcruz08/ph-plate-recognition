@@ -212,10 +212,10 @@ char MyFrame::identifier(wxImage &image)
 char MyFrame::converter(int value)
 {
     char val;
-    //Lowercase Letter
+    //Numbers
     if(value > 25)
     {
-        val = value+71; 
+        val = value+22; 
     }
     //Uppercase Letter
     else
